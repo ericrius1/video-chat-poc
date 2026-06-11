@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Chat PoC</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 1340px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      background: #111;
+      color: #eee;
+    }
+    h1 { font-size: 1.2rem; }
+    #videos {
+      display: flex;
+      gap: 10px;
+    }
+    video {
+      width: 640px;
+      max-width: 48vw;
+      aspect-ratio: 4 / 3;
+      background: #000;
+      border-radius: 8px;
+    }
+    #controls { margin: 1rem 0; display: flex; gap: 10px; align-items: center; }
+    button {
+      font-size: 1rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      background: #3b82f6;
+      color: white;
+    }
+    button:disabled { background: #444; cursor: not-allowed; }
+    #recordBtn.recording { background: #dc2626; }
+    #status { color: #aaa; }
+    a#download {
+      color: #4ade80;
+      font-weight: bold;
+    }
+    canvas { display: none; }
+  </style>
+</head>
+<body>
+  <h1>Video Chat PoC</h1>
+  <p id="share"></p>
+  <div id="controls">
+    <button id="joinBtn">Join call</button>
+    <button id="recordBtn" disabled>Start recording</button>
+    <a id="download" hidden>Download recording</a>
+    <span id="status">not connected</span>
+  </div>
+  <div id="videos">
+    <video id="localVideo" autoplay playsinline muted></video>
+    <video id="remoteVideo" autoplay playsinline></video>
+  </div>
+  <canvas id="composite" width="1280" height="480"></canvas>
+  <script src="/main.js"></script>
+</body>
+</html>
